@@ -1,23 +1,34 @@
+alert('Hello user. Welcome to the snall app!');
+
+//array of objects for pokemons with 4 items
 let pokemonList = [
   {
     name: 'Bulbasaur',
-    height: 7,
+    height: 0.7,
     type: ['grass', 'poison']
   },
   {
     name: 'Wartortle',
-    height: 10,
+    height: 1.0,
     type: ['water']
   },
   {
-    name: 'Charmander',
-    height: 6,
-    type: ['fire']
+    name: 'Charizard',
+    height: 1.7,
+    type: ['fire', 'flying']
   },
   {
     name: 'Pikachu',
-    height: 4,
+    height: 0.4,
     type: ['electric']
   }
 
 ];
+
+// looping through the array objects to print all items.
+for (let i = 0; i < pokemonList.length; i++) {
+  document.write('<br>' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ') ');
+  if (pokemonList[i].height > 1) {
+    document.write('- Wow, that\'s big!');
+  }
+};

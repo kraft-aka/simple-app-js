@@ -1,0 +1,40 @@
+:root {
+  --color-background: #e9f1f7;
+  --color-primary: #073b4c;
+  --color-fonts: #14213d;
+  --color-top: #06d6a0;
+}
+
+body {
+  background-color: var(--color-background);
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  text-align: center;
+  color: var(--color-fonts);
+  padding: 10em;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--color-top);
+  width: 100%;
+  min-height: 2em;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-top);
+  width: 100%;
+  min-height: 2em;
+}
