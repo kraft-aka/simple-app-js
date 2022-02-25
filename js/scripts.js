@@ -27,8 +27,8 @@ let pokemonList = [
 
 // looping through the array objects to print all items.
 for (let i = 0; i < pokemonList.length; i++) {
-  document.write('<br>' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ') ');
+  document.write('<br>'+'<p>' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ') '+ '</p>');
   if (pokemonList[i].height > 1) {
-    document.write('- Wow, that\'s big!');
+    document.write('<p>'+'- Wow, that\'s big!'+ '</p>');
   }
 };
