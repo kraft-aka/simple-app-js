@@ -1,4 +1,4 @@
-alert('Hello user. Welcome to the snall app!');
+// alert('Hello user. Welcome to the snall app!');
 
 //array of objects for pokemons with 4 items
 let pokemonList = [
@@ -26,9 +26,10 @@ let pokemonList = [
 ];
 
 // looping through the array objects to print all items.
-for (let i = 0; i < pokemonList.length; i++) {
-  document.write('<br>'+'<p>' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ') '+ '</p>');
-  if (pokemonList[i].height > 1) {
-    document.write('<p>'+'- Wow, that\'s big!'+ '</p>');
+
+pokemonList.forEach(function(pokemon){
+  document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ') '+ '</p>' );
+  if (pokemon.height > 1) {
+    document.write('<p>' +'+ Wow, that\'s big!' + '</p>');
   }
-};
+});
