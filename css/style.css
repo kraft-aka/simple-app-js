@@ -21,6 +21,15 @@ h1 {
   color: var(--color-primary);
 }
 
+h4 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+p {
+  line-height: 5px;
+}
+
 .top {
   position: fixed;
   top: 0;

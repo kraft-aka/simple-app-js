@@ -49,7 +49,7 @@ let pokemonRepository = (function() {
   function updateValue(e) {
     let name = e.target.value;
     let filtered = pokemonList.filter(function(pokemon){
-    if (pokemon.name === name){
+    if (pokemon.name.toLowerCase() === name){
       return true;
     } else {
       return false;
@@ -82,4 +82,4 @@ pokemonRepository.getAll().forEach(function(pokemon){
 
 // test
 console.log(pokemonRepository.addv({name:'Charmander', height: 0.6, type: ['fire']}));
-document.write('The number of pokemons are: ' + pokemonRepository.getLength());
+document.write('<h4>'+'The number of pokemons are: ' + pokemonRepository.getLength() + '</h4>');
