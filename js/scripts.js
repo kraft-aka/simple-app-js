@@ -67,14 +67,14 @@ let pokemonRepository = (function() {
     listItem.appendChild(button);
     pokemonArr.appendChild(listItem);
 
-    button.addEventListener('click', showDetails);
+    button.addEventListener('click', function(event) {
+      showDetails(pokemon.name);
+    })
   }
 
   function showDetails(pokemon) {
     console.log(pokemon);
   }
-
-
 
   return {
     // add: add,
