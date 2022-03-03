@@ -57,6 +57,7 @@ let pokemonRepository = (function() {
     console.log(filtered);
   }
 
+  // adding list and buttons to the app
   function addListItem(pokemon) {
     let pokemonArr = document.querySelector('.pokemon-list');
     let listItem = document.createElement('li');
@@ -65,11 +66,14 @@ let pokemonRepository = (function() {
     button.classList.add('button-class');
     listItem.appendChild(button);
     pokemonArr.appendChild(listItem);
+
+    button.addEventListener('click', showDetails);
   }
 
   function showDetails(pokemon) {
     console.log(pokemon);
   }
+
 
 
   return {
@@ -93,4 +97,4 @@ pokemonRepository.getAll().forEach(function(pokemon) {
 
 // test
 // console.log(pokemonRepository.addv({name:'Charmander', height: 0.6, type: ['fire']}));
-document.write('<h4>' + 'The number of pokemons are: ' + pokemonRepository.getLength() + '</h4>');
+// document.write('<h4>' + 'The number of pokemons are: ' + pokemonRepository.getLength() + '</h4>');
