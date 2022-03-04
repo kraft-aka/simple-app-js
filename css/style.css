@@ -78,3 +78,10 @@ footer {
   width: 100%;
   min-height: 2em;
 }
+
+.img-class {
+  position: static;
+  min-width: 50px;
+  min-height: auto;
+  margin: 5px 5px;
+}
