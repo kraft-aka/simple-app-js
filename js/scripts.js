@@ -80,7 +80,8 @@ let pokemonRepository = (function() {
   function imgOnload(pokemon) {
     let img = document.createElement('img');
     let div = document.querySelector('.img-class');
-    div.appendChild(img);
+    img.innerText += '<img src=" ' + img.src+'"/>';
+    img.appendChild(div);
     img.src = pokemon.img;
 
     console.log(img.src);
