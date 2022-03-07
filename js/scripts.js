@@ -1,47 +1,61 @@
-// alert('Hello user. Welcome to the snall app!');
 
-//array of objects for pokemons with 4 items
+//array of objects for pokemons
 let pokemonRepository = (function() {
-  let pokemonList = [{
-      name: 'Bulbasaur',
-      height: 0.7,
-      type: ['grass', 'poison']
-    },
-    {
-      name: 'Wartortle',
-      height: 1.0,
-      type: ['water']
-    },
-    {
-      name: 'Charizard',
-      height: 1.7,
-      type: ['fire', 'flying']
-    },
-    {
-      name: 'Pikachu',
-      height: 0.4,
-      type: ['electric']
-    }
-  ];
+   let pokemonList = [];
+   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+
 
   function getAll() {
     return pokemonList;
   }
 
+  // load details of pokemons
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function (e) {
+      console.error(e)
+    });
+  }
+
+  // fetch the data from API
+    function loadList() {
+      return fetch(apiUrl).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        json.results.forEach(function (item) {
+          let pokemon = {
+            name: item.name,
+            detailsUrl: item.url
+          };
+          add(pokemon);
+        });
+      }).catch(function (e) {
+        console.error(e);
+      })
+    }
+
+
+// function to display the number of pokemons
   function getLength() {
     return pokemonList.length;
   }
 
-  // function to add pokemopn to pokemonList and check the type and object keys
-  function addv(pokemon) {
-    if (typeof pokemon === 'object' && typeof pokemon !== null && Object.keys(pokemon).every(el => ['name', 'height', 'type'].includes(el))) {
+  // function to add pokemoon to pokemonList and check the type and object keys
+  function add(pokemon) {
+    if (typeof pokemon === 'object' && typeof pokemon !== null && Object.keys(pokemon).every(el => ['name', 'detailsUrl'].includes(el))) {
       pokemonList.push(pokemon);
     } else {
-      alert('Invalid data is given.');
+      alert('Invalid Data!');
     }
   }
 
-  //function to filter the pokemons to find the by name
+  // function to filter the pokemons to find the by name ---in progress---
   const input = document.querySelector('#find');
   input.addEventListener('input', updateValue);
 
@@ -69,14 +83,18 @@ let pokemonRepository = (function() {
 
     button.addEventListener('click', function(event) {
       showDetails(pokemon.name);
+      console.log(pokemon.name);
     })
   }
 
+ // show details of pokemon
   function showDetails(pokemon) {
-    console.log(pokemon);
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
   }
 
-  //function to add an image URL
+  // function to add an image URL
   function imgOnload(pokemon) {
     let img = document.createElement('img');
     let div = document.querySelector('.img-class');
@@ -87,30 +105,20 @@ let pokemonRepository = (function() {
     console.log(img.src);
   }
 
-  // function imgOnload(pokemon) {
-  //   div.innerText += '<img src=" ' + img.src+'"/>';
-  // }
-  // img.src = 'img/.jpg';
-
 
   return {
-    addv: addv,
+    add: add,
     getAll: getAll,
+    loadList: loadList,
+    loadDetails: loadDetails,
     addListItem: addListItem,
     getLength: getLength
   }
 
 })();
 
-
-// looping through the array objects to print all items.
-
-pokemonRepository.getAll().forEach(function(pokemon) {
-  pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function(){
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
 });
-
-
-
-// test
-// console.log(pokemonRepository.addv({name:'Charmander', height: 0.6, type: ['fire']}));
-// document.write('<h4>' + 'The number of pokemons are: ' + pokemonRepository.getLength() + '</h4>');
