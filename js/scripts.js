@@ -9,44 +9,13 @@ let pokemonRepository = (function() {
     return pokemonList;
   }
 
-  // load details of pokemons
-  function loadDetails(item) {
-    let url = item.detailsUrl;
-    return fetch(url).then(function (response) {
-      return response.json();
-    }).then(function (details) {
-      item.imageUrl = details.sprites.front_default;
-      item.height = details.height;
-      item.types = details.types;
-    }).catch(function (e) {
-      console.error(e)
-    });
-  }
-
-  // fetch the data from API
-    function loadList() {
-      return fetch(apiUrl).then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        json.results.forEach(function (item) {
-          let pokemon = {
-            name: item.name,
-            detailsUrl: item.url
-          };
-          add(pokemon);
-        });
-      }).catch(function (e) {
-        console.error(e);
-      })
-    }
-
 
 // function to display the number of pokemons
   function getLength() {
     return pokemonList.length;
   }
 
-  // function to add pokemoon to pokemonList and check the type and object keys
+// function to add pokemoon to pokemonList and check the type and object keys
   function add(pokemon) {
     if (typeof pokemon === 'object' && typeof pokemon !== null && Object.keys(pokemon).every(el => ['name', 'detailsUrl'].includes(el))) {
       pokemonList.push(pokemon);
@@ -55,7 +24,7 @@ let pokemonRepository = (function() {
     }
   }
 
-  // function to filter the pokemons to find the by name ---in progress---
+// function to filter the pokemons to find the by name ---in progress---
   const input = document.querySelector('#find');
   input.addEventListener('input', updateValue);
 
@@ -71,7 +40,7 @@ let pokemonRepository = (function() {
     console.log(filtered);
   }
 
-  // adding list and buttons to the app
+// adding list and buttons to the app
   function addListItem(pokemon) {
     let pokemonArr = document.querySelector('.pokemon-list');
     let listItem = document.createElement('li');
@@ -82,19 +51,44 @@ let pokemonRepository = (function() {
     pokemonArr.appendChild(listItem);
 
     button.addEventListener('click', function(event) {
-      showDetails(pokemon.name);
+      showDetails(pokemon);
       console.log(pokemon.name);
     })
   }
 
- // show details of pokemon
-  function showDetails(pokemon) {
-    loadDetails(pokemon).then(function () {
-      console.log(pokemon);
+  // fetch the data from API
+    function loadList() {
+      return fetch(apiUrl).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        json.results.forEach(function (item) {
+          let pokemon = {
+            name: item.name,
+            detailsUrl: item.url
+          };
+          add(pokemon);
+          console.log(pokemon);
+        });
+      }).catch(function (e) {
+        console.error(e);
+      })
+    }
+
+// load details of pokemons
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function (e) {
+      console.error(e)
     });
   }
 
-  // function to add an image URL
+// function to add an image URL
   function imgOnload(pokemon) {
     let img = document.createElement('img');
     let div = document.querySelector('.img-class');
@@ -105,6 +99,12 @@ let pokemonRepository = (function() {
     console.log(img.src);
   }
 
+// show details of pokemon
+  function showDetails(item) {
+    pokemonRepository.loadDetails(item).then(function () {
+      console.log(item);
+    });
+  }
 
   return {
     add: add,
@@ -112,6 +112,7 @@ let pokemonRepository = (function() {
     loadList: loadList,
     loadDetails: loadDetails,
     addListItem: addListItem,
+    showDetails: showDetails,
     getLength: getLength
   }
 
