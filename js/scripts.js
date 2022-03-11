@@ -1,7 +1,8 @@
-//array of objects for pokemons
+// array of objects for pokemons
 let pokemonRepository = (function() {
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+  let modalContainer = document.querySelector('#modal-container');
 
 
   function getAll() {
@@ -51,7 +52,6 @@ let pokemonRepository = (function() {
 
     button.addEventListener('click', function(event) {
       showDetails(pokemon);
-      // console.log(pokemon.name);
     })
   }
 
@@ -87,9 +87,14 @@ let pokemonRepository = (function() {
     });
   }
 
-  // show details of pokemon
-  let modalContainer = document.querySelector('#modal-container');
+
   function showDetails(item) {
+    pokemonRepository.loadDetails(item).then(function() {
+      showModal(item);
+    });
+
+  // show details of pokemon
+  function showModal(item) {
     modalContainer.innerHTML = '';
 
     // create the div element
@@ -122,6 +127,7 @@ let pokemonRepository = (function() {
     modalContainer.appendChild(modal);
 
     modalContainer.classList.add('is-visible');
+    }
 
     // function to hide Modal;
     function hideModal() {
@@ -145,9 +151,7 @@ let pokemonRepository = (function() {
 
 
 
-    pokemonRepository.loadDetails(item).then(function() {
-      showDetails(item);
-    });
+
   }
 
   return {
