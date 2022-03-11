@@ -51,6 +51,12 @@ footer {
   min-height: 2em;
 }
 
+.pokemon-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .button-class {
   background-color: var(--color-white);
   color: inherit;
@@ -116,8 +122,14 @@ footer {
   padding: 15px;
   width: 100%;
   max-width: 700px;
-  text-align: left;
+  text-align: center;
   border-radius: 5px;
+}
+
+.modal img {
+  width: auto;
+  max-height: 50%;
+  cursor: grab;
 }
 
 .modal-close {

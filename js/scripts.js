@@ -87,17 +87,6 @@ let pokemonRepository = (function() {
     });
   }
 
-  // function to add an image URL
-  function imgOnload(pokemon) {
-    let img = document.createElement('img');
-    let div = document.querySelector('.img-class');
-    img.innerText += '<img src=" ' + img.src + '"/>';
-    img.appendChild(div);
-    img.src = pokemon.img;
-
-    console.log(img.src);
-  }
-
   // show details of pokemon
   let modalContainer = document.querySelector('#modal-container');
   function showDetails(item) {
