@@ -8,6 +8,10 @@
   --light-grey: #b9b9c4;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--color-background);
   font-family: 'Roboto', sans-serif;
@@ -36,6 +40,15 @@ p {
 li {
   list-style-type: none;
   margin: 10px 0;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-top);
+  width: 100%;
+  min-height: 2em;
 }
 
 .button-class {
@@ -70,18 +83,65 @@ li {
   min-height: 2em;
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: var(--color-top);
-  width: 100%;
-  min-height: 2em;
-}
-
 .img-class {
   position: static;
   min-width: 50px;
   min-height: auto;
   margin: 5px 5px;
+}
+
+#modal-container {
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* to show it above other content */
+  z-index: 999;
+  /* to allow scrolling if the screen is not high enough*/
+  overflow: auto;
+  /* this is used to center the modal */
+  display: grid;
+  text-align: center;
+}
+
+.modal {
+  margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  background-color: #fff000;
+  padding: 15px;
+  width: 100%;
+  max-width: 700px;
+  text-align: left;
+  border-radius: 5px;
+}
+
+.modal-close {
+  float: right;
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+  color: #777;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.modal h1 {
+  margin-top: 0;
+}
+
+.modal p {
+  margin-bottom: 0;
+}
+
+#modal-container.is-visible {
+  display: block;
+}
+
+#modal-container {
+  display: none;
 }
