@@ -63,7 +63,7 @@ footer {
 .button-class {
   background-color: var(--color-white);
   color: inherit;
-  border: 2px solid var(--color-top);
+  border: 1px solid var(--color-top);
   padding: 5px 20px;
   text-align: center;
   text-decoration: none;
@@ -72,12 +72,13 @@ footer {
   margin: 4px 2px;
   transition: all 0.75s ease-in-out;
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 5px;
+  width: 150px;
 }
 
 .button-class:hover {
-  font-size: 24px;
-  box-shadow: 10px 2px 2px 2px var(--light-grey);
+  font-size: inherit;
+  box-shadow: 2px 2px 2px 2px var(--light-grey);
   border-color: var(--color-primary);
   background-color: var(--color-secondary);
   opacity: 0.95;
@@ -108,19 +109,17 @@ footer {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  /* to show it above other content */
   z-index: 999;
-  /* to allow scrolling if the screen is not high enough*/
   overflow: auto;
-  /* this is used to center the modal */
-  display: grid;
+  display: none;
   text-align: center;
+  animation-name: modalopen;
+  animation-duration: 1.5s;
 }
 
 .modal {
   margin: auto;
   display: inline-block;
-  box-sizing: border-box;
   background-color: #fff000;
   padding: 15px;
   width: 100%;
@@ -157,6 +156,7 @@ footer {
   display: block;
 }
 
-#modal-container {
-  display: none;
+@keyframes modalopen {
+  from { opacity: 0}
+  to { opacity: 1}
 }
