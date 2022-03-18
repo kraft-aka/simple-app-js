@@ -51,7 +51,7 @@ footer {
   min-height: 2em;
 }
 
-.pokemon-list {
+.group-list-group {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto;
   justify-content: space-evenly;
@@ -60,7 +60,7 @@ footer {
   padding: 10px;
 }
 
-.button-class {
+.btn {
   background-color: var(--color-white);
   color: inherit;
   border: 1px solid var(--color-top);
@@ -76,7 +76,7 @@ footer {
   width: 150px;
 }
 
-.button-class:hover {
+.btn:hover {
   font-size: inherit;
   box-shadow: 2px 2px 2px 2px var(--light-grey);
   border-color: var(--color-primary);
@@ -117,7 +117,7 @@ footer {
   animation-duration: 1.5s;
 }
 
-.modal {
+.modal-dialog {
   margin: auto;
   display: inline-block;
   background-color: #fff000;

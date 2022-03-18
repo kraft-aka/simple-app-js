@@ -42,11 +42,13 @@ let pokemonRepository = (function() {
 
   // adding list and buttons to the app
   function addListItem(pokemon) {
-    let pokemonArr = document.querySelector('.pokemon-list');
+    let pokemonArr = document.querySelector('.list-group');
     let listItem = document.createElement('li');
+    listItem.classList.add('group-list-item');
     let button = document.createElement('button');
+    button.setAttribute('data-toggle', 'modal');
     button.innerText = pokemon.name;
-    button.classList.add('button-class');
+    button.classList.add('btn');
     listItem.appendChild(button);
     pokemonArr.appendChild(listItem);
 
@@ -82,6 +84,7 @@ let pokemonRepository = (function() {
       item.imageUrlBack = details.sprites.back_default;
       item.height = details.height;
       item.types = details.types;
+      item.abilities = details.abilities;
     }).catch(function(e) {
       console.error(e)
     });
@@ -93,10 +96,6 @@ let pokemonRepository = (function() {
       showModal(item);
     });
 
-    $('[data-toggle="modal"]').on('click', function(){
-    let targetSelector = $(this).attr('data-target');
-    $(targetSelector).modal('show'); // Bootstrap’s own function to make the modal appear
-  });
 
   // show details of pokemon
   function showModal(item) {
@@ -106,7 +105,7 @@ let pokemonRepository = (function() {
     let modalHeader = $('.modal-header');
 
     // clear existing content
-    //modalHeader.empty();
+    modalHeader.empty();
     modalTitle.empty();
     modalBody.empty();
 
@@ -134,43 +133,13 @@ let pokemonRepository = (function() {
     modalBody.append(hightPoke);
     modalBody.append(typePoke);
     modalBody.append(abilityPoke);
-
-
-
-    // modalContainer.innerHTML = '';
-    //
-    // // create the div element
-    // let modal = document.createElement('div');
-    // modal.classList.add('modal');
-    //
-    // // add close button
-    // let closeButton = document.createElement('button');
-    // closeButton.classList.add('modal-close');
-    // closeButton.innerText = 'X';
-    // closeButton.addEventListener('click', hideModal);
-    //
-    // // create title part of the modal
-    // let titleElement = document.createElement('h1');
-    // titleElement.innerText = item.name.toUpperCase();
-    //
-    // // create content of the modalContainer
-    // let heightElement = document.createElement('p');
-    // heightElement.innerText = 'height: '+ item.height;
-    //
-    // // create img tag of the modal
-    // let imageElement = document.createElement('img');
-    // imageElement.src = item.imageUrl;
-
-
-
-    // modal.appendChild(closeButton);
-    // modal.appendChild(titleElement);
-    // modal.appendChild(heightElement);
-    // modal.appendChild(imageElement);
-    // modalContainer.appendChild(modal);
-    //
-    // modalContainer.classList.add('is-visible');
     }
+
+    // Bootstrap’s own function to make the modal appear
+    $('[data-toggle="modal"]').on('click', function(){
+      let targetSelector = $(this).attr('data-target');
+      $(targetSelector).modal('show');
+    });
 
     // function to hide Modal;
     function hideModal() {
