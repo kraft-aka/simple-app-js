@@ -66,7 +66,6 @@ let pokemonRepository = (function() {
           detailsUrl: item.url
         };
         add(pokemon);
-        console.log(pokemon);
       });
     }).catch(function(e) {
       console.error(e);
@@ -80,6 +79,7 @@ let pokemonRepository = (function() {
       return response.json();
     }).then(function(details) {
       item.imageUrl = details.sprites.front_default;
+      item.imageUrlBack = details.sprites.back_default;
       item.height = details.height;
       item.types = details.types;
     }).catch(function(e) {
@@ -93,40 +93,83 @@ let pokemonRepository = (function() {
       showModal(item);
     });
 
+    $('[data-toggle="modal"]').on('click', function(){
+    let targetSelector = $(this).attr('data-target');
+    $(targetSelector).modal('show'); // Bootstrap’s own function to make the modal appear
+  });
+
   // show details of pokemon
   function showModal(item) {
-    modalContainer.innerHTML = '';
+    // creating the variables
+    let modalBody = $('.modal-body');
+    let modalTitle = $('.modal-title');
+    let modalHeader = $('.modal-header');
 
-    // create the div element
-    let modal = document.createElement('div');
-    modal.classList.add('modal');
+    // clear existing content
+    //modalHeader.empty();
+    modalTitle.empty();
+    modalBody.empty();
 
-    // add close button
-    let closeButton = document.createElement('button');
-    closeButton.classList.add('modal-close');
-    closeButton.innerText = 'X';
-    closeButton.addEventListener('click', hideModal);
+    //create element for name in modal content
+    let namePoke = $('<h1>'+ item.name.toUpperCase() + '</h1>');
 
-    // create title part of the modal
-    let titleElement = document.createElement('h1');
-    titleElement.innerText = item.name.toUpperCase();
+    // create element for image in modal content
+    let imagePokeFront = $('<img class="modal-img" style="width:80%">');
+    imagePokeFront.attr('src', item.imageUrl);
+    let imagePokeBack = $('<img class="modal-img" style="width:80%">');
+    imagePokeBack.attr('src', item.imageUrlBack);
 
-    // create content of the modalContainer
-    let heightElement = document.createElement('p');
-    heightElement.innerText = 'height: '+ item.height;
+    // create element for hight in modal content
+    let hightPoke = $('<p>'+ 'height: '+item.height+'</p>');
 
-    // create img tag of the modal
-    let imageElement = document.createElement('img');
-    imageElement.src = item.imageUrl;
+    // create element for height in modal
+    let typePoke = $('<p>'+ 'type: ' + item.types + '</p>');
+
+    // create element for abilities in modal
+    let abilityPoke = $('<p>' + 'abilities: '+ item.abilities + '</p>');
+
+    modalTitle.append(namePoke);
+    modalBody.append(imagePokeFront);
+    modalBody.append(imagePokeBack);
+    modalBody.append(hightPoke);
+    modalBody.append(typePoke);
+    modalBody.append(abilityPoke);
 
 
-    modal.appendChild(closeButton);
-    modal.appendChild(titleElement);
-    modal.appendChild(heightElement);
-    modal.appendChild(imageElement);
-    modalContainer.appendChild(modal);
 
-    modalContainer.classList.add('is-visible');
+    // modalContainer.innerHTML = '';
+    //
+    // // create the div element
+    // let modal = document.createElement('div');
+    // modal.classList.add('modal');
+    //
+    // // add close button
+    // let closeButton = document.createElement('button');
+    // closeButton.classList.add('modal-close');
+    // closeButton.innerText = 'X';
+    // closeButton.addEventListener('click', hideModal);
+    //
+    // // create title part of the modal
+    // let titleElement = document.createElement('h1');
+    // titleElement.innerText = item.name.toUpperCase();
+    //
+    // // create content of the modalContainer
+    // let heightElement = document.createElement('p');
+    // heightElement.innerText = 'height: '+ item.height;
+    //
+    // // create img tag of the modal
+    // let imageElement = document.createElement('img');
+    // imageElement.src = item.imageUrl;
+
+
+
+    // modal.appendChild(closeButton);
+    // modal.appendChild(titleElement);
+    // modal.appendChild(heightElement);
+    // modal.appendChild(imageElement);
+    // modalContainer.appendChild(modal);
+    //
+    // modalContainer.classList.add('is-visible');
     }
 
     // function to hide Modal;
