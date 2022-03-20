@@ -110,16 +110,16 @@ let pokemonRepository = (function() {
     modalBody.empty();
 
     //create element for name in modal content
-    let namePoke = $('<h1>'+ item.name.toUpperCase() + '</h1>');
+    let namePoke = $('<h1>'+ item.name + '</h1>');
 
     // create element for image in modal content
-    let imagePokeFront = $('<img class="modal-img" style="width:80%">');
+    let imagePokeFront = $('<img class="modal-img" style="width:50%">');
     imagePokeFront.attr('src', item.imageUrl);
-    let imagePokeBack = $('<img class="modal-img" style="width:80%">');
+    let imagePokeBack = $('<img class="modal-img" style="width:50%">');
     imagePokeBack.attr('src', item.imageUrlBack);
 
     // create element for hight in modal content
-    let hightPoke = $('<p>'+ 'height: '+item.height+'</p>');
+    let heightPoke = $('<p>'+ 'height: '+item.height+'</p>');
 
     // create element for height in modal
     let typePoke = $('<p>'+ 'type: ' + item.types + '</p>');
@@ -130,7 +130,7 @@ let pokemonRepository = (function() {
     modalTitle.append(namePoke);
     modalBody.append(imagePokeFront);
     modalBody.append(imagePokeBack);
-    modalBody.append(hightPoke);
+    modalBody.append(heightPoke);
     modalBody.append(typePoke);
     modalBody.append(abilityPoke);
     }

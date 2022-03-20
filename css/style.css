@@ -100,7 +100,7 @@ footer {
   margin: 5px 5px;
 }
 
-#modal-container {
+/* #modal-container {
   position: fixed;
   padding: 20px;
   box-sizing: border-box;
@@ -115,11 +115,11 @@ footer {
   text-align: center;
   animation-name: modalopen;
   animation-duration: 1.5s;
-}
+} */
 
 .modal-dialog {
   margin: auto;
-  display: inline-block;
+  display: float;
   background-color: #fff000;
   padding: 15px;
   width: 100%;
