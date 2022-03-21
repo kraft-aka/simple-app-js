@@ -11,31 +11,25 @@
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
   background: linear-gradient(to bottom, var(--color-background), var(--color-top));
   text-align: center;
   color: var(--color-fonts);
-  padding: 10em;
 }
 
 h1 {
   font-weight: 700;
+  margin: 50px;
   color: var(--color-primary);
+  text-shadow: 5px 5px rgba(0, 0, 0, 0.1);
 }
 
 li {
   list-style-type: none;
-}
-
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: var(--color-top);
-  width: 100%;
-  min-height: 2em;
 }
 
 input {
@@ -43,30 +37,17 @@ input {
   max-width: 800px;
 }
 
-fieldset {
-  display: block;
-  margin-left: 20%;
-}
-
-.navbar navbar-custom{
-  position: fixed;
-  background-color: var(--color-grey);
-  margin-top: 0;
-  left: 0;
-  top: 0;
-  height: 100px;
-}
-
 .list-group {
   display: grid;
-  grid-template-columns: auto auto auto auto auto auto;
-  justify-content: space-evenly;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
   align-content: center;
   gap: 10px 10px;
 }
 
 .group-list-item {
-  padding: 10px;
+  padding: 15px;
 }
 
 .btn {
@@ -79,7 +60,8 @@ fieldset {
   transition: all 0.75s ease-in-out;
   cursor: pointer;
   border-radius: 5px;
-  min-width: 150px;
+  width: 150px;
+  min-width: 50px;
 }
 
 .btn:hover {
@@ -96,6 +78,10 @@ fieldset {
   border-radius: 5px;
   transition: all 0.75s ease-in-out;
   cursor: pointer;
+}
+
+.image-banner {
+  margin: 50px;
 }
 
 #modal-container {
@@ -116,12 +102,12 @@ fieldset {
 }
 
 .modal-dialog {
-  margin-top: 10%;
+  margin-top: 25%;
   display: block;
   width: 100%;
   max-width: 700px;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .modal img {
@@ -130,26 +116,22 @@ fieldset {
   cursor: grab;
 }
 
-.modal-close {
-  float: right;
-  -webkit-appearance: none;
-  border: 0;
-  background: none;
-  color: #777;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
 #modal-container.is-visible {
   display: block;
 }
 
 @keyframes modalopen {
   from {
-    opacity: 0
+    opacity: 0;
   }
 
   to {
-    opacity: 1
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .list-group {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
