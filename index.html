@@ -13,27 +13,36 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-custom">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="img/pokemon-logo-png-30.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        Pokedex App
-      </a>
+      <ul class="navbar-nav mr-auto"></ul>
+      <li class="nav-item active">
+        <a class="navbar-brand" href="#">
+          <img src="img/pokemon-logo-png-30.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          Home
+        </a>
+      </li>
+      <li class="nav-item"><a class="navbar-brand" href="https://pokeapi.co/ " target="_blank">API</a>
+      </li>
+      <li class="nav-item"><a href="#" class="navbar-brand">Portfolio</a>
+      </li>
+
+
+
       <!-- Serach bar -->
-      <fieldset id="find">
-        <div class="input-group my-5">
-          <input type="text" class="form-control" placeholder="Enter pokemons name" aria-label="Recipient's username" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="search">Search</button>
-          </div>
-        </div>
-      </fieldset>
+      <form class="form-inline my-2 my-sm-0">
+        <input class="form-control mr-sm-2" id="find" type="search" placeholder="Search" aria-label="Search">
+      </form>
+      <!-- Search bar is to be updated -->
     </div>
   </nav>
-
+  <div class="image-banner">
+    <img src="img/pokemon-2.png" alt="image of Pikachu and a Boy" width="200px" ,height="auto" class="logo">
+  </div>
 
 
   <h1>POKEDEX</h1>
+  <p>Click on buttons to see more information</p>
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -60,7 +69,7 @@
 
   <div id="modal-container"></div>
 
-  <footer></footer>
+  <!-- <footer></footer> -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
