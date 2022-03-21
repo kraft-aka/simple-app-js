@@ -24,7 +24,7 @@ let pokemonRepository = (function() {
     }
   }
 
-  // function to filter the pokemons to find the by name ---in progress---
+  // function to filter the pokemons to find the by name in progress
   const input = document.querySelector('#find');
   input.addEventListener('input', updateValue);
 
@@ -32,12 +32,12 @@ let pokemonRepository = (function() {
     let name = e.target.value;
     let filtered = pokemonList.filter(function(pokemon) {
       if (pokemon.name.toLowerCase() === name) {
-        return true;
+         return true;
       } else {
         return false;
       }
     });
-    console.log(filtered);
+    alert(filtered.name);
   }
 
   // adding list and buttons to the app
@@ -56,6 +56,7 @@ let pokemonRepository = (function() {
     button.addEventListener('click', function(event) {
       showDetails(pokemon);
     })
+
   }
 
   // fetch the data from API
@@ -85,14 +86,14 @@ let pokemonRepository = (function() {
       item.imageUrlBack = details.sprites.back_default;
       item.height = details.height;
       item.weight = details.weight;
-      item.types = details.types;
-      item.abilities = details.abilities;
+      //item.types = details.types;         this line should be revised
+      //item.abilities = details.abilities;   this line should be revised
     }).catch(function(e) {
       console.error(e)
     });
   }
 
-
+// function to display the details of pokemons
   function showDetails(item) {
     loadDetails(item).then(function() {
       showModal(item);
@@ -112,7 +113,7 @@ let pokemonRepository = (function() {
     modalBody.empty();
 
     //create element for name in modal content
-    let nameElement = $('<h1>'+ item.name + '</h1>');
+    let nameElement = $('<h2>'+ item.name + '</h2>');
     console.log(nameElement);
 
     // create element for image in modal content
@@ -166,11 +167,7 @@ let pokemonRepository = (function() {
       if (target === modalContainer) {
         hideModal();
       }
-    })
-
-
-
-
+    });
   }
 
   return {
@@ -179,8 +176,8 @@ let pokemonRepository = (function() {
     loadList: loadList,
     loadDetails: loadDetails,
     addListItem: addListItem,
-    showDetails: showDetails,
-    getLength: getLength
+    showDetails: showDetails
+
   }
 
 })();
