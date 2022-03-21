@@ -47,8 +47,9 @@ let pokemonRepository = (function() {
     listItem.classList.add('group-list-item');
     let button = document.createElement('button');
     button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#exampleModal');
     button.innerText = pokemon.name;
-    button.classList.add('btn');
+    button.classList.add('btn-warning');
     listItem.appendChild(button);
     pokemonArr.appendChild(listItem);
 
@@ -93,7 +94,7 @@ let pokemonRepository = (function() {
 
 
   function showDetails(item) {
-    pokemonRepository.loadDetails(item).then(function() {
+    loadDetails(item).then(function() {
       showModal(item);
     });
 
@@ -111,33 +112,34 @@ let pokemonRepository = (function() {
     modalBody.empty();
 
     //create element for name in modal content
-    let namePoke = $('<h1>'+ item.name + '</h1>');
+    let nameElement = $('<h1>'+ item.name + '</h1>');
+    console.log(nameElement);
 
     // create element for image in modal content
-    let imagePokeFront = $('<img class="modal-img" style="width:50%">');
-    imagePokeFront.attr('src', item.imageUrl);
-    let imagePokeBack = $('<img class="modal-img" style="width:50%">');
-    imagePokeBack.attr('src', item.imageUrlBack);
+    let imageElementFront = $('<img class="modal-img" style="width:50%">');
+    imageElementFront.attr('src', item.imageUrl);
+    let imageElementBack = $('<img class="modal-img" style="width:50%">');
+    imageElementBack.attr('src', item.imageUrlBack);
 
     // create element for hight in modal content
-    let heightPoke = $('<p>'+ 'height: '+item.height+'</p>');
+    let heightElement = $('<p>'+ 'height: '+item.height+'</p>');
 
     // create element for weigth in modal content
-    let weightPoke = $('<p>'+ 'weight: '+item.weight+'</p>');
+    let weightElement = $('<p>'+ 'weight: '+item.weight+'</p>');
 
     // create element for height in modal
-    let typePoke = $('<p>'+ 'types: ' + Object.values(item.types) + '</p>');
+    //let typeElement = $('<p>'+ 'types: ' + Object.values(item.types) + '</p>');
 
     // create element for abilities in modal
-    let abilityPoke = $('<p>' + 'abilities: '+ item.abilities + '</p>');
+    //let abilityElement = $('<p>' + 'abilities: '+ item.abilities + '</p>');
 
-    modalTitle.append(namePoke);
-    modalBody.append(imagePokeFront);
-    modalBody.append(imagePokeBack);
-    modalBody.append(heightPoke);
-    modalBody.append(weightPoke);
-    modalBody.append(typePoke);
-    modalBody.append(abilityPoke);
+    modalTitle.append(nameElement);
+    modalBody.append(imageElementFront);
+    modalBody.append(imageElementBack);
+    modalBody.append(heightElement);
+    modalBody.append(weightElement);
+    //modalBody.append(typeElement);
+    //modalBody.append(abilityElement);
     }
 
     // Bootstrap’s own function to make the modal appear
