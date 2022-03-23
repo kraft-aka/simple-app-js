@@ -102,11 +102,10 @@ input {
 }
 
 .modal-dialog {
-  margin-top: 10%;
+  margin-top: 5%;
   display: block;
   width: 100%;
   max-width: 700px;
-  text-align: center;
   border-radius: 10px;
 }
 
