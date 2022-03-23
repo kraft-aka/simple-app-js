@@ -1,3 +1,4 @@
+
 // array of objects for pokemon
 let pokemonRepository = (function () {
   let pokemonList = [];
@@ -31,7 +32,7 @@ let pokemonRepository = (function () {
     let filteredPokemons = pokemonList.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(name.toLowerCase())
     );
-    loadList(filteredPokemons);
+    addListItem(filteredPokemons);
   }
 
   // adding list and buttons to the app
@@ -47,7 +48,7 @@ let pokemonRepository = (function () {
     listItem.appendChild(button);
     pokemonArr.appendChild(listItem);
 
-    button.addEventListener('click', function (event) {
+    button.addEventListener('click', function () {
       showDetails(pokemon);
     });
   }
@@ -103,7 +104,6 @@ let pokemonRepository = (function () {
       // creating the variables
       let modalBody = $('.modal-body');
       let modalTitle = $('.modal-title');
-      let modalHeader = $('.modal-header');
 
       // clear existing content
       modalTitle.empty();
@@ -125,9 +125,7 @@ let pokemonRepository = (function () {
       let weightElement = $('<p>' + 'weight: ' + item.weight + '</p>');
 
       // create element for height in modal
-      let typeElement = $(
-        '<p>' +
-        'types: ' +
+      let typeElement = $('<p>' + 'types: ' +
         item.types.map((i) => i.type.name).join(', ') +
         '</p>'
       );
