@@ -35,6 +35,10 @@ input {
   max-width: 800px;
 }
 
+.logo {
+  margin: 25px 0;
+}
+
 .list-group {
   display: grid;
   width: 100%;
