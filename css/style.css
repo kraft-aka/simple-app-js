@@ -3,9 +3,7 @@
   --color-primary: #073b4c;
   --color-fonts: #14213d;
   --color-top: #06d6a0;
-  --color-white: #fff;
   --color-secondary: #ffffd9;
-  --light-grey: #b9b9c4;
   --button-warning: #fcf7de;
 }
 
@@ -40,7 +38,7 @@ input {
 .list-group {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 200px);
   justify-content: center;
   align-content: center;
   gap: 10px 10px;
