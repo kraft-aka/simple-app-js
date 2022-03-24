@@ -28,11 +28,12 @@ let pokemonRepository = (function () {
   input.addEventListener('input', findPokemon);
 
   function findPokemon(e) {
-    let name = e.target.value;
+    let name = e.target.value.toLowerCase();
     let filteredPokemons = pokemonList.filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(name.toLowerCase())
+      pokemon.name.toLowerCase().includes(name)
     );
-    addListItem(filteredPokemons);
+    document.querySelector('.list-group').innerHTML= '';
+    filteredPokemons.forEach(pokemon => addListItem(pokemon));
   }
 
   // adding list and buttons to the app
